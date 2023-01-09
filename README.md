@@ -50,8 +50,7 @@ Abra o terminal no diretório do projeto, Ou o terminal do vscode se você prefe
 </li>
 <li>
 escreva este comando na janela do terminal : yarn install </br>
-e aguarde a instalação das dependências do projeto .
- projeto .
+aguarde a instalação das dependências do projeto .
 </li>
 
 <li>
