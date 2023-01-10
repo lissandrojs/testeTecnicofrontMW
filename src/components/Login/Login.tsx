@@ -46,8 +46,18 @@ const LoginComponent = () =>{
         });
 
         if (response) {
-           return  localStorage.setItem("data",JSON.stringify(response.data))
-            // history("/home")
+           localStorage.setItem("data",JSON.stringify(response.data))
+            history("/home")
+            toast.success("Seja Bem vindo "+ response.data.username, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              });
         }
       };
 
@@ -73,6 +83,5 @@ const LoginComponent = () =>{
         
       )
 }
-
 
 export default LoginComponent
