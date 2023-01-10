@@ -12,6 +12,7 @@ import {yupResolver} from '@hookform/resolvers/yup'
 import ILogin from "../../interface/ILogin";
 import urlApi from "../../services/api";
 import InputComponent from "../Input/Input";
+import { toast} from "react-toastify";
 
 
 const LoginComponent = () =>{
@@ -29,14 +30,24 @@ const LoginComponent = () =>{
 });
 
     const onSubmitForm = async (bodyRequest:ILogin) => {
-        const response = await axios.post(urlApi,bodyRequest);
+        const response = await axios.post(urlApi,bodyRequest).catch(function (error){
+          if(error.response){
+            toast.error("verifique as credencias se estão corretas", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              });
+          }
+        });
 
-        if (response.data) {
-            localStorage.setItem("data",JSON.stringify(response.data))
+        if (response) {
+           return  localStorage.setItem("data",JSON.stringify(response.data))
             // history("/home")
-        }
-        else{
-          console.log("verifique as credencias estao corretas")
         }
       };
 
@@ -46,7 +57,7 @@ const LoginComponent = () =>{
       <Typography sx={{paddingTop:"20px"}} variant="h2">
           Login
       </Typography>
-      <Container style={{border: "1px solid #d6772e"}}>
+      <Container style={{border: "1px solid #162b88"}}>
       <Form onSubmit={handleSubmit(onSubmitForm)}>
           <ContainerForm >
               <InputComponent errors={errors.username?.message} register={register} name="username" label="User" placeholder="Seu Username"/>

@@ -42,7 +42,7 @@ export const ContentInput = styled.div<IProps>`
         height:25px;
         border-radius:5px;
         background: transparent;
-        border: 1px solid #d6772e;
+        border: 1px solid #162b88;
         align-items: center;
         flex: 1;
         color: var(--grey-0);

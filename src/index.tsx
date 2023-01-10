@@ -1,10 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import {RouterProvider} from "react-router-dom";
-
 import reportWebVitals from "./reportWebVitals";
-import RouterApp from "./routes";
+import App from "./app";
 
 
 const root = ReactDOM.createRoot(
@@ -12,7 +10,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-     <RouterProvider router={RouterApp} />
+    <App/>  
   </React.StrictMode>
 );
 
