@@ -1,3 +1,4 @@
+import HomeComponent from "../../components/Home/home"
 import Layout from "../../components/Layout/Layout"
 
 
@@ -5,7 +6,7 @@ import Layout from "../../components/Layout/Layout"
 const HomePage = () =>{
     return (
             <Layout>
-                Home
+                <HomeComponent/>
             </Layout>
     )
 }

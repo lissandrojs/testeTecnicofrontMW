@@ -3,8 +3,8 @@ import { Box, Button, Typography} from "@mui/material"
 import { Link } from 'react-router-dom';
 import {Container, ContainerForm,Form} from './styles'
 import axios from "axios";
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate ,useLocation} from "react-router-dom";
 import { useForm } from 'react-hook-form';
 import  * as yup from "yup"
 import {yupResolver} from '@hookform/resolvers/yup'
@@ -18,6 +18,7 @@ import { toast} from "react-toastify";
 const LoginComponent = () =>{
 
     const history = useNavigate()
+    const location = useLocation();
 
     const schema = yup.object().shape({
       username:yup.string().required("nome de usuario e obrigatorio"),
@@ -30,7 +31,7 @@ const LoginComponent = () =>{
 });
 
     const onSubmitForm = async (bodyRequest:ILogin) => {
-        const response = await axios.post(urlApi,bodyRequest).catch(function (error){
+        const response = await axios.post(`${urlApi}/api/auth/login`,bodyRequest).catch(function (error){
           if(error.response){
             toast.error("verifique as credencias se estão corretas", {
               position: "top-right",
@@ -60,6 +61,16 @@ const LoginComponent = () =>{
               });
         }
       };
+
+      useEffect(()=>{
+
+        const getStorageUser : any = localStorage.getItem("data")
+      
+        if(JSON.parse(getStorageUser)?.accessToken){
+          history("/home")
+        }
+      
+      },[])      
 
 
     return(

@@ -13,6 +13,9 @@ export default createGlobalStyle`
     }
     label{
         font-size: 12px;
+    }
+    a{
+        text-decoration:none;
     }   
 `;
 
