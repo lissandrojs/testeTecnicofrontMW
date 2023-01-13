@@ -20,10 +20,10 @@ useEffect(()=>{
 },[])
 
   return (
-    <div >
+    <div  style={{backgroundColor:'#79bbf1'}}>
       <Header />
       <div >
-        <div>
+        <div style={{height:"100vh"}}>
             {children}
         </div>
       </div>

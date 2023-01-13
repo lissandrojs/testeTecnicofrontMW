@@ -15,21 +15,10 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import urlApi from '../../services/api';
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
+import { FcHome } from "react-icons/fc";
 
 
-
-function createData(
-  id?:number,
-  nome?: string,
-  tag?: string,
-  email?: string,
-  telefone?: string,
-  privado?:boolean,
-  tipoContato?: string,
-) {
-  return { id, nome, tag, email, telefone, privado ,tipoContato};
-}
 
 interface IContactList {
   id?:number,
@@ -48,28 +37,12 @@ const HomeComponent = () => {
     price:yup.number().required("Required price")
 
   })
-//   const {register,handleSubmit,formState:{errors}, }= useForm<IProductAdd>({
-//     resolver: yupResolver(schema)
-//   });
 
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [rows, setRows] = useState<IContactList[]>([]);
-
-// const onSubmitForm = async ({name,price}:IProductAdd)=>{
-//    const request =    axios.post("http://localhost:8081/products",{name,price}, `Bearer ${token}`)
-
-
-//   }
- interface IUserLoginInfo {
-  accessToken: string
-  id: number
-  tipos: string[]
-  tokenType:string
-  username: string
- }
 
  useEffect(()=>{
 
@@ -105,7 +78,9 @@ const HomeComponent = () => {
 
   return (
     <div style={{ height: '100%', width: '80%', margin: "45px auto"}}>
-
+       <Typography sx={{paddingTop:"20px" , textAlign:"center"}} variant="h2">
+         <FcHome/> Home
+      </Typography>
       <Button style={{marginBottom:"15px"}} variant="contained"> Adicionar Contato</Button>
        <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="spanning table">
