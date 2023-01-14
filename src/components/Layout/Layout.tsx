@@ -23,7 +23,7 @@ useEffect(()=>{
     <div  style={{backgroundColor:'#79bbf1'}}>
       <Header />
       <div >
-        <div style={{height:"100vh"}}>
+        <div>
             {children}
         </div>
       </div>
